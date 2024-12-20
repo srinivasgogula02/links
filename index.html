@@ -34,6 +34,7 @@
             text-decoration: underline;
         }
     </style>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <h1>My Links</h1>
@@ -43,7 +44,8 @@
         async function fetchLinks() {
             try {
                 const response = await fetch('/links.json');
-                const links = await response.json();
+                const data = await response.json();
+                const links = data.links; // Updated to access the links array
                 const linksList = document.getElementById('links-list');
                 
                 links.forEach(link => {
